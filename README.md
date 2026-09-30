@@ -29,6 +29,9 @@ G --> H[Dashboard + Reorder Alerts]
 
 ## Screenshots
 
+### Product dashboard
+![Product overview](docs/screenshots/product-overview.svg)
+
 ### Inventory dashboard
 ![Inventory dashboard](docs/screenshots/inventory-dashboard.svg)
 
