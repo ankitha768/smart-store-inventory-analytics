@@ -30,7 +30,7 @@ G --> H[Dashboard + Reorder Alerts]
 ## Screenshots
 
 ### Product dashboard
-![Product overview](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/product-overview.svg)
+![Product overview](docs/screenshots/product-overview.svg)
 
 ### Inventory dashboard
 ![Inventory dashboard](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/inventory-dashboard.svg)
