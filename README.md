@@ -1,31 +1,54 @@
 # Smart Store Inventory Analytics
 
-A Django-based inventory and sales analytics application with **MySQL-ready configuration**, **JWT authentication**, stock dashboards, sales summaries, and reorder alerts.
+A **Streamlit-first inventory and sales analytics application** built with Python. It provides an interactive portfolio dashboard for inventory monitoring, sales analytics, revenue tracking, and reorder alerts.
+
+The repository also retains the original Django/REST implementation under `config/`, `inventory/`, `sales/`, and `analytics/` for reference and backend-oriented evaluation.
+
+## 🚀 Streamlit deployment
+
+The Streamlit app entry point is:
+
+```text
+streamlit_app.py
+```
+
+### Run locally
+
+```bash
+python -m venv .venv
+
+# Windows
+.venv\Scripts\activate
+
+# macOS/Linux
+source .venv/bin/activate
+
+pip install -r requirements.txt
+streamlit run streamlit_app.py
+```
+
+Open the local URL shown by Streamlit, usually `http://localhost:8501`.
+
+### Deploy on Streamlit Community Cloud
+
+1. Push this repository to GitHub.
+2. Open Streamlit Community Cloud and create a new app.
+3. Select repository: `ankitha768/smart-store-inventory-analytics`.
+4. Select branch: `main`.
+5. Set the main file to: `streamlit_app.py`.
+6. Deploy.
+
+No MySQL server or environment secret is required for the Streamlit portfolio demo. The deployed dashboard uses session-state sample data so it can run as a self-contained Python application.
 
 ## Features
-- Product and inventory management.
-- Sales transaction recording.
-- JWT authentication endpoints.
-- Stock-level and reorder analytics.
-- Dashboard API for business metrics.
-- MySQL configuration through environment variables.
-- SQLite fallback for quick local development.
-- Sample fixture data.
-- Automated API tests.
 
-## Architecture
-```mermaid
-flowchart LR
-A[Web / API Client] --> B[Django REST API]
-B --> C[JWT Authentication]
-B --> D[Inventory App]
-B --> E[Sales App]
-D --> F[(MySQL / SQLite)]
-E --> F
-D --> G[Analytics]
-E --> G
-G --> H[Dashboard + Reorder Alerts]
-```
+- 📦 Inventory overview with category and product filters.
+- 📊 Sales revenue and category analytics.
+- 🚨 Automatic reorder alerts.
+- 🧾 Record-sale workflow with stock validation.
+- 💰 Revenue, transaction, product, and stock KPIs.
+- 🐍 Python-only Streamlit deployment path.
+- 🗃️ Original Django/REST implementation retained for backend reference.
 
 ## Screenshots
 
@@ -38,62 +61,49 @@ G --> H[Dashboard + Reorder Alerts]
 ### Analytics flow
 ![Analytics flow](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/analytics.svg)
 
-## Quick start
-```bash
-python -m venv .venv
-# Windows
-.venv\Scripts\activate
-# macOS/Linux
-source .venv/bin/activate
-pip install -r requirements.txt
-copy .env.example .env
-python manage.py migrate
-python manage.py loaddata sample_data
-python manage.py runserver
-```
+## Streamlit architecture
 
-Open http://127.0.0.1:8000/
-
-## API
-- `POST /api/token/`
-- `POST /api/token/refresh/`
-- `GET /api/products/`
-- `POST /api/products/`
-- `POST /api/sales/`
-- `GET /api/analytics/summary/`
-
-## Configuration
-For MySQL, set:
-```
-DB_ENGINE=django.db.backends.mysql
-DB_NAME=smart_store
-DB_USER=root
-DB_PASSWORD=your_password
-DB_HOST=localhost
-DB_PORT=3306
+```mermaid
+flowchart LR
+A[Streamlit UI] --> B[Session State]
+B --> C[Inventory Data]
+B --> D[Sales Data]
+C --> E[KPIs + Reorder Alerts]
+D --> F[Revenue + Sales Analytics]
+C --> G[Record Sale]
+G --> B
 ```
 
 ## Project structure
+
 ```text
-config/
-inventory/
-sales/
-analytics/
+streamlit_app.py
+requirements.txt
+.streamlit/config.toml
+docs/screenshots/
+config/                 # original Django configuration
+inventory/              # original Django inventory app
+sales/                  # original Django sales app
+analytics/              # original Django analytics app
 templates/
 fixtures/
-docs/screenshots/
-manage.py
-requirements.txt
-.env.example
+tests/
 ```
 
-This repository is a portfolio implementation of the Smart Store project scope; local SQLite is provided so the project can be evaluated without a database server.
+## Legacy Django/API setup
 
-## Production-style support files
-- `Dockerfile` and `.dockerignore` for containerized development.
-- `Makefile` and `.github/workflows/ci.yml` for repeatable commands and CI.
-- `docs/API.md` and `docs/database.md` for API/database setup.
-- `templates/dashboard.html` provides the local dashboard landing page.
-- `docs/screenshots/product-overview.svg` for the polished dashboard preview.
+The original Django implementation is retained separately from the Streamlit deployment path.
 
-The visual assets are repository documentation mockups rather than screenshots of a deployed system.
+```bash
+pip install -r requirements-django.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+The legacy API includes JWT authentication, product/sales endpoints, and an analytics summary endpoint.
+
+## Notes
+
+- Streamlit deployment is intentionally self-contained and does not depend on MySQL.
+- Streamlit session state is temporary; data entered during a session is not a permanent database record.
+- The repository's visual assets are documentation mockups, not screenshots of a live deployed instance.
