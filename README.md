@@ -1,10 +1,10 @@
-# Smart Store Inventory Analytics
+# Smart Store Inventory Analytics — Kirana Shop
 
-A **Streamlit-first inventory and sales analytics application** built with Python. It provides an interactive portfolio dashboard for inventory monitoring, sales analytics, revenue tracking, and reorder alerts.
+A **Streamlit-first kirana shop inventory and sales analytics application** built with Python. The dashboard is designed around a small Indian grocery store and demonstrates stock tracking, daily sales, revenue analytics, and low-stock reorder alerts.
 
-The repository also retains the original Django/REST implementation under `config/`, `inventory/`, `sales/`, and `analytics/` for reference and backend-oriented evaluation.
+The repository also retains the original Django/REST implementation under `config/`, `inventory/`, `sales/`, and `analytics/` for backend-oriented evaluation.
 
-## 🚀 Streamlit deployment
+## 🛒 Streamlit deployment
 
 The Streamlit app entry point is:
 
@@ -31,45 +31,47 @@ Open the local URL shown by Streamlit, usually `http://localhost:8501`.
 
 ### Deploy on Streamlit Community Cloud
 
-1. Push this repository to GitHub.
-2. Open Streamlit Community Cloud and create a new app.
-3. Select repository: `ankitha768/smart-store-inventory-analytics`.
-4. Select branch: `main`.
-5. Set the main file to: `streamlit_app.py`.
-6. Deploy.
+1. Open Streamlit Community Cloud and create a new app.
+2. Select repository: `ankitha768/smart-store-inventory-analytics`.
+3. Select branch: `main`.
+4. Set the main file to: `streamlit_app.py`.
+5. Deploy.
 
-No MySQL server or environment secret is required for the Streamlit portfolio demo. The deployed dashboard uses session-state sample data so it can run as a self-contained Python application.
+No MySQL server or environment secret is required for the Streamlit portfolio demo. The dashboard uses local session-state sample data so it can run as a self-contained Python application.
 
-## Features
+## 🏪 Kirana shop features
 
-- 📦 Inventory overview with category and product filters.
-- 📊 Sales revenue and category analytics.
-- 🚨 Automatic reorder alerts.
-- 🧾 Record-sale workflow with stock validation.
+- 🛒 Grocery products such as rice, dal, sugar, oil, salt, atta, biscuits, milk, tea, and soap.
+- ⚖️ Product units such as kg, litre, pack, and bar.
+- 📦 Inventory overview with category and product search filters.
+- 🚨 Low-stock reorder alerts for products below their reorder level.
+- 🧾 Record-sale workflow with stock validation and automatic stock deduction.
+- 📊 Daily sales revenue and category-wise revenue charts.
 - 💰 Revenue, transaction, product, and stock KPIs.
+- 🇮🇳 Indian grocery pricing displayed in INR (₹).
 - 🐍 Python-only Streamlit deployment path.
 - 🗃️ Original Django/REST implementation retained for backend reference.
 
 ## Screenshots
 
-### Product dashboard
-![Product overview](docs/screenshots/product-overview.svg)
+### Kirana shop dashboard
+![Kirana shop dashboard](docs/screenshots/product-overview.svg)
 
 ### Inventory dashboard
-![Inventory dashboard](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/inventory-dashboard.svg)
+![Kirana inventory dashboard](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/inventory-dashboard.svg)
 
 ### Analytics flow
-![Analytics flow](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/analytics.svg)
+![Kirana analytics flow](https://raw.githubusercontent.com/ankitha768/smart-store-inventory-analytics/main/docs/screenshots/analytics.svg)
 
 ## Streamlit architecture
 
 ```mermaid
 flowchart LR
-A[Streamlit UI] --> B[Session State]
-B --> C[Inventory Data]
-B --> D[Sales Data]
+A[Kirana Shop UI] --> B[Streamlit Session State]
+B --> C[Product Inventory]
+B --> D[Sales Entries]
 C --> E[KPIs + Reorder Alerts]
-D --> F[Revenue + Sales Analytics]
+D --> F[Daily + Category Analytics]
 C --> G[Record Sale]
 G --> B
 ```
@@ -104,6 +106,7 @@ The legacy API includes JWT authentication, product/sales endpoints, and an anal
 
 ## Notes
 
-- Streamlit deployment is intentionally self-contained and does not depend on MySQL.
+- The Streamlit demo is intentionally self-contained and does not depend on MySQL.
 - Streamlit session state is temporary; data entered during a session is not a permanent database record.
+- The sample catalog and prices are illustrative portfolio data, not live shop pricing.
 - The repository's visual assets are documentation mockups, not screenshots of a live deployed instance.
