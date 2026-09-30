@@ -85,3 +85,12 @@ requirements.txt
 ```
 
 This repository is a portfolio implementation of the Smart Store project scope; local SQLite is provided so the project can be evaluated without a database server.
+
+## Production-style support files
+- `Dockerfile` and `.dockerignore` for containerized development.
+- `Makefile` and `.github/workflows/ci.yml` for repeatable commands and CI.
+- `docs/API.md` and `docs/database.md` for API/database setup.
+- `templates/dashboard.html` provides the local dashboard landing page.
+- `docs/screenshots/product-overview.svg` for the polished dashboard preview.
+
+The visual assets are repository documentation mockups rather than screenshots of a deployed system.
